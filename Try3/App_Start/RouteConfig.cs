@@ -14,10 +14,18 @@ namespace Try3
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+    name: "admin",
+    url: "{area:exists}/{controller=Home}/{action=Index}/{id}",
+         new[] { "Try3.Areas.Admin.Controllers" }
+    );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "Try3.Controllers" }
             );
         }
     }
+
 }

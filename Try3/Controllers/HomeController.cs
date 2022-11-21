@@ -25,9 +25,10 @@ namespace Try3.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            /*    ViewBag.Message = "Your application description page.";
 
-            return View();
+                return View();*/
+            return RedirectToAction("Index", "Home", new { Area = "admin" });
         }
 
         public ActionResult Contact()
