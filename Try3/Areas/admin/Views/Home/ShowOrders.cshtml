@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Try3.Models.orders>
+
+
+<div>
+    <h2>Заказы</h2>
+    <table>
+        <tr class="header">
+            <td><p>Номер заказа</p></td>
+            <td><p>Номер клиента</p></td>
+            <td><p>Номер авто</p></td>
+            <td><p>Количество</p></td>
+            <td><p>место</p></td>
+            <td></td>
+        </tr>
+        @foreach (Try3.Models.orders b in Model)
+        {
+            <tr>
+                <td><p>@b.id</p></td>
+                <td><p>@b.userId</p></td>
+                <td><p>@b.carId</p></td>
+                <td><p>@b.quantity</p></td>
+                <td><p>@b.placeId</p></td>
+                <td><p><a href="/admin/Home/Edit/@b.id">Изменить</a></p></td>
+                <td><p><a href="/admin/Home/Delete/@b.id">Удалить</a></p></td>
+
+            </tr>
+        }
+    </table>
+</div>

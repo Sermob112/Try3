@@ -1,0 +1,31 @@
+﻿@model Try3.Models.orders
+@{
+    ViewBag.Title = "edit";
+}
+
+<h2>Редактировать заказ</h2>
+@using (Html.BeginForm())
+{
+    <br />
+    @Html.LabelFor(model => model.userId, "Изменить номер клиента")
+    <br />
+    @Html.EditorFor(model => model.carId)
+    <br />
+    @Html.LabelFor(model => model.carId, "Изменить автомобиль")
+    <br />
+    @Html.EditorFor(model => model.carId)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.placeId, "Изменить место")
+    <br />
+    @Html.EditorFor(model => model.placeId)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.quantity, "Изменить количество мест мест")
+    <br />
+    @Html.EditorFor(model => model.quantity)
+    <br />
+    <br />
+    <input type="submit" value="Изменить" />
+}
+

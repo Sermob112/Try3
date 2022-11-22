@@ -5,6 +5,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
 
 namespace Try3.Models
 {
@@ -51,8 +54,10 @@ namespace Try3.Models
     }
     public partial class orders
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public Nullable<int> userId { get; set; }
+        public string userId { get; set; }
         public Nullable<int> placeId { get; set; }
         public Nullable<int> carId { get; set; }
         public Nullable<System.DateTime> created { get; set; }

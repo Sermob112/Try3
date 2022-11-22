@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Try3.Models.orders
+<h2>Удаление книги</h2>
+<dl>
+    <dt>Название заказа</dt>
+    <dd>
+        @Html.DisplayFor(model => model.id)
+    </dd>
+
+    <dt>Номер клиента</dt>
+    <dd>
+        @Html.DisplayFor(model => model.userId)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

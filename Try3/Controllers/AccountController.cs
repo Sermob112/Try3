@@ -71,19 +71,25 @@ namespace Try3.Controllers
         {
             if (!ModelState.IsValid)
             {
-
+           
                 return View(model);
 
 
             }
-            if (model.Email == "somemail@mail.ru" && model.Password == "ad46D_ewr3")
+           /* if (model.Email == "somemail@mail.ru" && model.Password == "ad46D_ewr3")
             {
                 return RedirectToAction("Index", "Home", new { Area = "admin" });
             }
-
+*/
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            if (model.Email == "somemail@mail.ru" && model.Password == "ad46D_ewr3")
+            {
+                SignInStatus success = SignInStatus.Success;
+                if(success == SignInStatus.Success)
+                return RedirectToAction("Index", "Home", new { Area = "admin" });
+            }
             switch (result)
             {
                 case SignInStatus.Success:
@@ -96,6 +102,7 @@ namespace Try3.Controllers
                 default:
                     ModelState.AddModelError("", "Неудачная попытка входа.");
                     return View(model);
+
             }
         }
 

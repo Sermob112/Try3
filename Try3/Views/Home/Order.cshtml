@@ -1,0 +1,27 @@
+﻿@model Try3.Models.orders
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Сделать заказ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.carId, "Укажите автомобиль")
+    <br />
+    @Html.EditorFor(model => model.carId)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.placeId, "Укажите место")
+    <br />
+    @Html.EditorFor(model => model.placeId)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.quantity, "Количество мест")
+    <br />
+    @Html.EditorFor(model => model.quantity)
+    <br />
+    <br />
+    <input type="submit" value="Добавить" />
+}

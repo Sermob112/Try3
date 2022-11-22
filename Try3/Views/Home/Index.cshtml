@@ -2,30 +2,109 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<html>
+<head>
+    <title>Парковка</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../CSS/maincss.css" />
+    <style>
+        html, body, h1, h2, h3, h4, h5 {
+            font-family: "Raleway", sans-serif
+        }
+    </style>
+</head>
+<body class="w3-light-grey">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="w3-display-container w3-animate-opacity">
+        <img src="../Source/autoStop.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+        <div class="w3-container w3-display-bottomleft w3-margin-bottom">
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="w3-container w3-padding-64 w3-center" id="park">
+        <h2>Добро пожаловать на нашу парковку</h2>
+        <p>Мы рады каждому нашему клиенту!</p>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+        <div class="w3-row-padding w3-margin-center">
+            <div class="w3-third">
+                <div class="w3-container w3-red w3-padding-16">
+
+                    <div class="w3-right">
+                        <h3>12</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Свободных мест</h4>
+                </div>
+            </div>
+
+            <div class="w3-third">
+                <div class="w3-container w3-teal w3-padding-16">
+                    <div class="w3-right">
+                        <h3>1500 рублей</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Средняя цена </h4>
+                </div>
+            </div>
+            <div class="w3-third">
+                <div class="w3-container w3-blue w3-padding-16">
+                    <div class="w3-right">
+                        <h3>26</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h4>Количество клиентов </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w3-panel">
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-third">
+                    <h5>Карта</h5>
+                    <div style="position:relative;overflow:hidden;">
+                        <a href="https://yandex.ru/maps/2/saint-petersburg/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Санкт‑Петербург</a>
+                        <a href="https://yandex.ru/maps/2/saint-petersburg/stops/station__9805916/?ll=30.323495%2C59.968139&tab=overview&utm_medium=mapframe&utm_source=maps&z=13" style="color:#eee;font-size:12px;position:absolute;top:14px;">Станция метро Чёрная речка — Яндекс Карты</a><iframe src="https://yandex.ru/map-widget/v1/-/CCUJROBSPB" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+                    </div>
+                </div>
+                <div class="w3-twothird">
+                    <h5>Новости нашей парковки</h5>
+                    <table class="w3-table w3-striped w3-white">
+                        <tr>
+                            <td><i class=" w3-text-red w3-large"></i></td>
+                            <td>Новость 1</td>
+                            <td><i>25 минут</i></td>
+                        </tr>
+                        <tr>
+                            <td><i class=" w3-text-blue w3-large"></i></td>
+                            <td>Новость 2</td>
+                            <td>
+                                <i>28 минут</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><i class="w3-text-red w3-large"></i></td>
+                            <td>Новость 3</td>
+                            <td><i>35 минут</i></td>
+                        </tr>
+                        <tr>
+                            <td><i class=" w3-text-blue w3-large"></i></td>
+                            <td>Новость 4</td>
+                            <td>
+                                <i>48 минут</i>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+       
     </div>
-</div>
+
+</body>
+</html>

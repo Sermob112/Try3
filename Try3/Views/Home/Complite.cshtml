@@ -1,0 +1,25 @@
+﻿@model Try3.Models.orders
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Complite";
+}
+
+<h2>Спасибо за ваш заказ</h2>
+<div class="w3-container w3-padding-64 w3-center" id="park">
+    <h2>  @Html.LabelFor(model => model.id, $"Ваш заказ № {@ViewBag.Message}")</h2>
+    <p></p>
+
+</div>
+<div class="w3-btn w3-round-xxlarge  w3-hover-white w3-center">
+    @Html.ActionLink("Вернуться на домашнюю страницу", "Index", "Home")
+</div>
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Выполнить вход" class="btn btn-default" />
+        </div>
+    </div>*@
+    <!--<h2>
+        @Html.LabelFor(model => model.id, $"Ваш заказ № {@ViewBag.Message}")-->
+    @*<h2>@ViewBag.Message</h2>*@
