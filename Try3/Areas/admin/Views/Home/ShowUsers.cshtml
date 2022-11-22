@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Try3.Models.ApplicationUser>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<h2>Заказы</h2>
+<div class="w3-container ">
+    <table class="w3-table w3-striped w3-bordered">
+        <tr class="header">
+            <th>Номер клиента</th>
+            <th>Почта клиента</th>
+            <th>Имя клиента</th>
+            <th>Подтвержден адрес</th>
+            <th>Номер телефона</th>
+        </tr>
+        @foreach (Try3.Models.ApplicationUser b in Model)
+        {
+            <tr>
+                <th>@b.Id</th>
+                <th>@b.Email</th>
+                <th>@b.UserName</th>
+                <th>@b.EmailConfirmed</th>
+                <th>@b.PhoneNumber</th>
+                <th><button class="w3-button w3-green"><a href="/admin/Home/EditUsers/@b.Id">Изменить</a></button></th>
+                <th><button class="w3-button w3-red"><a href="/admin/Home/DeleteUsers/@b.Id">Удалить</a></button></th>
+
+            </tr>
+        }
+    </table>
+</div>

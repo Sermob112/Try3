@@ -1,29 +1,31 @@
 ﻿@model IEnumerable<Try3.Models.orders>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<div>
     <h2>Заказы</h2>
-    <table>
-        <tr class="header">
-            <td><p>Номер заказа</p></td>
-            <td><p>Номер клиента</p></td>
-            <td><p>Номер авто</p></td>
-            <td><p>Количество</p></td>
-            <td><p>место</p></td>
-            <td></td>
-        </tr>
-        @foreach (Try3.Models.orders b in Model)
-        {
-            <tr>
-                <td><p>@b.id</p></td>
-                <td><p>@b.userId</p></td>
-                <td><p>@b.carId</p></td>
-                <td><p>@b.quantity</p></td>
-                <td><p>@b.placeId</p></td>
-                <td><p><a href="/admin/Home/Edit/@b.id">Изменить</a></p></td>
-                <td><p><a href="/admin/Home/Delete/@b.id">Удалить</a></p></td>
-
+    <div class="w3-container ">
+        <table class="w3-table w3-striped w3-bordered">
+            <tr class="header">
+                <th>Номер заказа</th>
+                <th>Номер клиента</th>
+                <th>Номер авто</th>
+                <th>Количество</th>
+                <th>место</th>
             </tr>
-        }
-    </table>
-</div>
+            @foreach (Try3.Models.orders b in Model)
+            {
+                <tr>
+                    <th>@b.id</th>
+                    <th>@b.userId</th>
+                    <th>@b.carId</th>
+                    <th>@b.quantity</th>
+                    <th>@b.placeId</th>
+                    <th><button class="w3-button w3-green"><a href="/admin/Home/Edit/@b.id">Изменить</a></button></th>
+                    <th><button class="w3-button w3-red"><a href="/admin/Home/Delete/@b.id">Удалить</a></button></th>
+
+                </tr>
+            }
+        </table>
+    </div>
+    

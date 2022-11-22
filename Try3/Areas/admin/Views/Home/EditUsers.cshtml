@@ -1,0 +1,25 @@
+﻿@model Try3.Models.ApplicationUser
+
+
+<h2>Редактировать заказ</h2>
+@using (Html.BeginForm())
+{
+
+    <br />
+    @Html.LabelFor(model => model.Email, "Изменить email")
+    <br />
+    @Html.EditorFor(model => model.Email)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.UserName, "Изменить Имя")
+    <br />
+    @Html.EditorFor(model => model.UserName)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.PhoneNumber, "Изменить телефон")
+    <br />
+    @Html.EditorFor(model => model.PhoneNumber)
+    <br />
+    <br />
+    <input type="submit" value="Изменить" />
+}

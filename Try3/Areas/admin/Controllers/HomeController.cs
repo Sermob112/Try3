@@ -69,6 +69,52 @@ namespace Try3.Areas.admin.Controllers
             return RedirectToAction("ShowOrders", "Home", new { Area = "admin" });
         }
 
-
+        public ActionResult ShowUsers()
+        {
+            return View(db.Users);
+        }
+        [HttpGet]
+        public ActionResult EditUsers(string id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            ApplicationUser b = db.Users.Find(id);
+            if (b != null)
+            {
+                return View(b);
+            }
+            return HttpNotFound();
+        }
+        [HttpPost]
+        public ActionResult EditUsers(ApplicationUser b)
+        {
+            db.Entry(b).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ShowUsers", "Home", new { Area = "admin" });
+        }
+        [HttpGet]
+        public ActionResult DeleteUsers(string id)
+        {
+            ApplicationUser b = db.Users.Find(id);
+            if (b == null)
+            {
+                return HttpNotFound();
+            }
+            return View(b);
+        }
+        [HttpPost, ActionName("DeleteUsers")]
+        public ActionResult DeleteUsersConfirmed(string id)
+        {
+            ApplicationUser b = db.Users.Find(id);
+            if (b == null)
+            {
+                return HttpNotFound();
+            }
+            db.Users.Remove(b);
+            db.SaveChanges();
+            return RedirectToAction("ShowUsers", "Home", new { Area = "admin" });
+        }
     }
 }

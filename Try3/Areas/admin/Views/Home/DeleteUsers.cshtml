@@ -1,0 +1,19 @@
+﻿
+@model Try3.Models.ApplicationUser
+<h2>Удаление книги</h2>
+<dl>
+    <dt>Id клиента</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+
+    <dt>Email клиента</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

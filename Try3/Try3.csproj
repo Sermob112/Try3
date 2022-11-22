@@ -214,6 +214,9 @@
     <Content Include="Areas\admin\Views\Home\ShowOrders.cshtml" />
     <Content Include="Areas\admin\Views\Home\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Home\ShowUsers.cshtml" />
+    <Content Include="Areas\admin\Views\Home\EditUsers.cshtml" />
+    <Content Include="Areas\admin\Views\Home\DeleteUsers.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
