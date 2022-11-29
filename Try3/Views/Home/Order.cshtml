@@ -8,12 +8,12 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.carId, "Укажите автомобиль")
+   @* @Html.LabelFor(model => model.carId, "Укажите автомобиль")
     <br />
     @Html.EditorFor(model => model.carId)
+    <br />*@
     <br />
-    <br />
-    @Html.LabelFor(model => model.placeId, "Укажите номер парковки")
+    @Html.LabelFor(model => model.placeId, "Укажите номер места")
     <br />
     @Html.EditorFor(model => model.placeId)
     <br />
@@ -21,6 +21,11 @@
     @Html.LabelFor(model => model.quantity, "Количество мест")
     <br />
     @Html.EditorFor(model => model.quantity)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.carNum, "номер вашего авто")
+    <br />
+    @Html.EditorFor(model => model.carNum)
     <br />
     <br />
     <input type="submit" value="Добавить" />

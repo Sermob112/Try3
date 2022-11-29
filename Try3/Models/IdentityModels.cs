@@ -64,7 +64,7 @@ namespace Try3.Models
         public Nullable<int> carId { get; set; }
         public Nullable<System.DateTime> created { get; set; }
         public int quantity { get; set; }
-
+        public string carNum { get; set; }
         public virtual cars cars { get; set; }
         public virtual place place { get; set; }
         public virtual ApplicationUser users { get; set; }

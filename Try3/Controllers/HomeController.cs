@@ -58,9 +58,11 @@ namespace Try3.Controllers
         [HttpPost]
         public ActionResult Order(orders orders)
         {
+            var carNun = db.Cars.FirstOrDefault(t => t.carNum == orders.carNum);
             var id = User.Identity.GetUserId();
             orders.created = DateTime.Now;
             orders.userId = id;
+            orders.carId = carNun.id;
             db.Orders.Add(orders);
             db.SaveChanges();
 
