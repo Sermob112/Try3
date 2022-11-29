@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -64,6 +65,7 @@ namespace Try3.Areas.admin.Controllers
         [HttpPost]
         public ActionResult Edit(orders b)
         {
+            /*b.userId = id;*/
             db.Entry(b).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("ShowOrders", "Home", new { Area = "admin" });
@@ -114,6 +116,20 @@ namespace Try3.Areas.admin.Controllers
             }
             db.Users.Remove(b);
             db.SaveChanges();
+            return RedirectToAction("ShowUsers", "Home", new { Area = "admin" });
+        }
+        [HttpGet]
+        public ActionResult CreateUsers()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateUsers(ApplicationUser user)
+        {
+          
+            db.Users.Add(user);
+            db.SaveChanges();
+
             return RedirectToAction("ShowUsers", "Home", new { Area = "admin" });
         }
     }

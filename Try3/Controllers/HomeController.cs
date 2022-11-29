@@ -13,7 +13,7 @@ namespace Try3.Controllers
     {
         
         ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize]
+       
         public ActionResult Index()
         {
             IList<string> roles = new List<string> { "Роль не определена" };
@@ -62,6 +62,23 @@ namespace Try3.Controllers
             orders.created = DateTime.Now;
             orders.userId = id;
             db.Orders.Add(orders);
+            db.SaveChanges();
+
+            return RedirectToAction("Complite");
+        }
+        [HttpGet]
+        [Authorize]
+        public ActionResult AddCar()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddCar(cars cars)
+        {
+            var id = User.Identity.GetUserId();
+
+            cars.userId = id;
+            db.Cars.Add(cars);
             db.SaveChanges();
 
             return RedirectToAction("Complite");

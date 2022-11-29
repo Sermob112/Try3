@@ -1,0 +1,30 @@
+﻿
+@model Try3.Models.ApplicationUser
+
+
+<h2>Добавить пользователя</h2>
+@using (Html.BeginForm())
+{
+    <br />
+    @Html.LabelFor(model => model.Id, "Ввести Id")
+    <br />
+    @Html.EditorFor(model => model.Id)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.Email, "Ввести email")
+    <br />
+    @Html.EditorFor(model => model.Email)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.UserName, "Ввести Имя")
+    <br />
+    @Html.EditorFor(model => model.UserName)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.PhoneNumber, "Ввести телефон")
+    <br />
+    @Html.EditorFor(model => model.PhoneNumber)
+    <br />
+    <br />
+    <input type="submit" value="Добавить" />
+}

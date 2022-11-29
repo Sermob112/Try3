@@ -25,18 +25,20 @@ namespace Try3.Models
     public partial class cars
     {
 
-        public cars()
+    /*    public cars()
         {
             this.orders = new HashSet<orders>();
-        }
-
+        }*/
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public Nullable<int> userId { get; set; }
+        public string userId { get; set; }
         public string mark { get; set; }
+        public string carNum { get; set; }
+        /*  public string mark { get; set; }
+                public virtual ApplicationUser users { get; set; }
 
-        public virtual ApplicationUser users { get; set; }
-
-        public virtual ICollection<orders> orders { get; set; }
+                public virtual ICollection<orders> orders { get; set; }*/
     }
     public partial class place
     {
@@ -61,7 +63,7 @@ namespace Try3.Models
         public Nullable<int> placeId { get; set; }
         public Nullable<int> carId { get; set; }
         public Nullable<System.DateTime> created { get; set; }
-        public Nullable<int> quantity { get; set; }
+        public int quantity { get; set; }
 
         public virtual cars cars { get; set; }
         public virtual place place { get; set; }

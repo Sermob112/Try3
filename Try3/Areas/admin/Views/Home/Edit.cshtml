@@ -6,8 +6,21 @@
 <h2>Редактировать заказ</h2>
 @using (Html.BeginForm())
 {
-  
+    <dt>Номер заказа</dt>
     <br />
+    <h2>
+        @Html.DisplayFor(model => model.id)
+    </h2>
+
+    @Html.HiddenFor(model => model.userId)
+    @Html.HiddenFor(model => model.created)
+    <br />
+@*    @Html.EditorFor(model => model.created)
+    <br />
+    <br />
+    @Html.EditorFor(model => model.userId)
+    <br />*@
+
     @Html.LabelFor(model => model.carId, "Изменить автомобиль")
     <br />
     @Html.EditorFor(model => model.carId)
