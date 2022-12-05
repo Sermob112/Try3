@@ -16,13 +16,13 @@ namespace Try3.Controllers
        
         public ActionResult Index()
         {
-            IList<string> roles = new List<string> { "Роль не определена" };
+           /* IList<string> roles = new List<string> { "Роль не определена" };
             ApplicationUserManager userManager = HttpContext.GetOwinContext()
                                                     .GetUserManager<ApplicationUserManager>();
             ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
             if (user != null)
-                roles = userManager.GetRoles(user.Id);
-            return View(roles);
+                roles = userManager.GetRoles(user.Id);*/
+            return View(/*roles*/);
         }
       
         public ActionResult About()
@@ -47,6 +47,13 @@ namespace Try3.Controllers
           /*  var b = new orders { userId = Id };*/
             /*var  b = db.Orders.Find(id);*/
             ViewBag.Message = b.id;
+            return View();
+        }
+        public ActionResult CompliteCar()
+        {
+            var Id = User.Identity.GetUserId();
+            var b = db.Cars.FirstOrDefault(t => t.userId == Id);
+            ViewBag.Message = b.id.ToString();
             return View();
         }
         [HttpGet]
@@ -83,8 +90,12 @@ namespace Try3.Controllers
             db.Cars.Add(cars);
             db.SaveChanges();
 
-            return RedirectToAction("Complite");
+            return RedirectToAction("CompliteCar");
         }
-
+        [Authorize]
+        public ActionResult Authrized()
+        {
+            return View(db.Users);
+        }
     }
 }

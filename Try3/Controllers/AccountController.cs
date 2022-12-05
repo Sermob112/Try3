@@ -93,7 +93,13 @@ namespace Try3.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    /* return RedirectToLocal(returnUrl);
+                     *
+                     *тестовый вход за клиента
+                     *one@gmail.com
+                     ad46D_ewr3
+                     */
+                    return RedirectToAction("index", "Manage");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

@@ -176,13 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202211211220299_InitialCreate.cs" />
-    <Compile Include="Migrations\202211211220299_InitialCreate.designer.cs">
-      <DependentUpon>202211211220299_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211211221381_DataMigration.cs" />
-    <Compile Include="Migrations\202211211221381_DataMigration.designer.cs">
-      <DependentUpon>202211211221381_DataMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202212051145048_DataMigration.cs" />
+    <Compile Include="Migrations\202212051145048_DataMigration.designer.cs">
+      <DependentUpon>202212051145048_DataMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -270,6 +266,9 @@
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Home\Complite.cshtml" />
     <Content Include="Views\Home\AddCar.cshtml" />
+    <Content Include="Views\Home\Authrized.cshtml" />
+    <Content Include="Views\Manage\Info.cshtml" />
+    <Content Include="Views\Home\CompliteCar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,11 +288,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202211211220299_InitialCreate.resx">
-      <DependentUpon>202211211220299_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211211221381_DataMigration.resx">
-      <DependentUpon>202211211221381_DataMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212051145048_DataMigration.resx">
+      <DependentUpon>202212051145048_DataMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

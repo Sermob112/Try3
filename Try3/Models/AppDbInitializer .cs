@@ -16,6 +16,8 @@ namespace Try3.Models
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
+         
+
             // создаем две роли
             var role1 = new IdentityRole { Name = "admin" };
             var role2 = new IdentityRole { Name = "user" };
@@ -24,9 +26,11 @@ namespace Try3.Models
             roleManager.Create(role1);
             roleManager.Create(role2);
 
+
+
             // создаем пользователей
             var admin = new ApplicationUser { Email = "somemail@mail.ru", UserName = "somemail@mail.ru" };
-            string password = "ad46D_ewr3";
+            string password = "admin01";
             var result = userManager.Create(admin, password);
 
             // если создание пользователя прошло успешно

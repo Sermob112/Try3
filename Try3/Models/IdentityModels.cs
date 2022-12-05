@@ -21,6 +21,8 @@ namespace Try3.Models
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
+        public List<cars> ViewCars { get; set; }
+        public ICollection<orders> Orders { get; set; }
     }
     public partial class cars
     {
@@ -35,10 +37,20 @@ namespace Try3.Models
         public string userId { get; set; }
         public string mark { get; set; }
         public string carNum { get; set; }
-        /*  public string mark { get; set; }
-                public virtual ApplicationUser users { get; set; }
+      /*  public string mark { get; set; }*/
+        public virtual ApplicationUser users { get; set; }
 
-                public virtual ICollection<orders> orders { get; set; }*/
+      /*  public virtual ICollection<orders> orders { get; set; }*/
+    }
+    public class UserDitailView : IdentityUser
+    {
+        public List<orders> Orders { get; set; }
+        public Nullable<int> placeId { get; set; }
+        public Nullable<int> carId { get; set; }
+        public string mark { get; set; }
+
+        public int price { get; set; }
+        public string Name { get; set; }
     }
     public partial class place
     {
@@ -49,7 +61,7 @@ namespace Try3.Models
         }
 
         public int id { get; set; }
-        public Nullable<int> price { get; set; }
+        public int price { get; set; }
 
 
         public virtual ICollection<orders> orders { get; set; }
@@ -68,12 +80,25 @@ namespace Try3.Models
         public virtual cars cars { get; set; }
         public virtual place place { get; set; }
         public virtual ApplicationUser users { get; set; }
+
     }
+/*    public partial class ViewModels
+    {
+        public List<orders> ViewOrders { get; set; }
+        public List<cars> ViewCars { get; set; }
+        public IEnumerable<place> ViewPlaces { get; set; }
+        public IEnumerable<ApplicationUser> Users { get; set; }
+       
+    }*/
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+       /* public DbSet<ViewModels> viewModels { get; set; }*/
         public DbSet<cars> Cars { get; set; }
         public DbSet<orders> Orders { get; set; }
         public DbSet<place> Places { get; set; }
+
+        
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

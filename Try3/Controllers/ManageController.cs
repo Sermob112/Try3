@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Try3.Models;
 
 namespace Try3.Controllers
@@ -13,9 +15,10 @@ namespace Try3.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        
         public ManageController()
         {
         }
@@ -52,8 +55,72 @@ namespace Try3.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        [Authorize]
+        public  ActionResult Index()
         {
+            var Id = User.Identity.GetUserId();
+            /*     var b = db.Users.FirstOrDefault(t => t.Id == Id);*/
+            /*
+                        orders order = db.Orders.Include(a => a.users)
+                  .Where(a => a.userId == Id)
+                  .FirstOrDefault();
+                        if (order == null)
+                        {
+                            return HttpNotFound();
+                        }
+                        var view = new UserDitailView
+                        {
+                            Id = order.userId,
+                            placeId = order.placeId,
+                            carId = order.carId,
+                            *//* Orders = order.users.Orders.ToList(),*//*
+                            mail = order.carNum
+                        };
+            */
+
+            /*******попытка вывести автомобили в коллекцию********
+             * var cars = db.Cars
+              .Include(a => a.users)
+              .Where(a => a.userId == Id)
+              .SingleOrDefault();
+         */
+            /* ******************* без ошибок, но не рабочая версия вывода коллекции*********
+                 var orderId = db.Orders.FirstOrDefault(a => a.userId == Id);
+                 ApplicationUser users = db.Users
+                     .Include(a => a.Orders)
+           .Where(a => a.Id == Id)
+           .FirstOrDefault();
+                 var view = new UserDitailView
+                 {
+                     Id = users.Id,
+
+                     Orders = users.Orders.ToList()
+                 };
+     */
+            var order = db.Orders.FirstOrDefault(a => a.userId == Id);
+            var user = db.Users.FirstOrDefault(a => a.Id == Id);
+            var place = db.Places.FirstOrDefault(a => a.id == order.placeId);
+            var view = new UserDitailView
+            {
+                Id = order.userId,
+                placeId = order.placeId,
+                carId = order.carId,
+                /* Orders = order.users.Orders.ToList(),*/
+                mark = order.carNum,
+                price = place.price,
+                Name = user.UserName
+            };
+
+
+
+            return View(view);
+
+        }
+        [Authorize]
+        public async Task<ActionResult> Info(ManageMessageId? message)
+        {
+
+
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль изменен."
                 : message == ManageMessageId.SetPasswordSuccess ? "Пароль задан."
@@ -64,6 +131,8 @@ namespace Try3.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -73,6 +142,7 @@ namespace Try3.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+
         }
 
         //
