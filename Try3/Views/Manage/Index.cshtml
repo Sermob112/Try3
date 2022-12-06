@@ -1,5 +1,6 @@
-﻿@model  Try3.Models.UserDitailView
-
+﻿@*@model  Try3.Models.UserDitailView*@
+@using Try3.Models
+@model dynamic
 
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,20 @@
     </style>
 </head>
 <body class="w3-light-grey">
-
-    
+    @*   @foreach (var item in Model.Orders)
+        {
+            @Html.DisplayNameFor(modelItem => item.placeId)
+            @Html.DisplayFor(modelItem => item.placeId)
+        }*@
+    @foreach (Try3.Models.orders customer in Model.Orders)
+    {
+        <tr>
+            <td>@customer.carId</td>
+            <td>@customer.userId</td>
+            <td>@customer.placeId</td>
+            <td>@customer.quantity</td>
+        </tr>
+    }
 
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px; top:110px;" id="mySidebar">
         <br>
@@ -25,13 +38,9 @@
                 <img src="../source/Account.png" class="w3-circle w3-margin-right" style="width:46px">
             </div>
             <div class="w3-col s8 w3-bar">
-                <span>Привет @Model.Name<strong>
-@*    @foreach (var item in Model.Orders)
-    {
-        @Html.DisplayNameFor(modelItem => item.placeId)
-        @Html.DisplayFor(modelItem => item.placeId)
-    }*@
-</span><br>
+                <span>
+                    <strong>  Привет @*@Model.Name*@</strong>
+                </span><br>
             </div>
         </div>
         <hr>
@@ -46,7 +55,7 @@
         </div>
     </nav>
 
-  
+
 
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
@@ -69,7 +78,7 @@
             <div class="w3-quarter">
                 <div class="w3-container w3-blue w3-padding-16">
                     <div class="w3-right">
-                        <h3>@Model.placeId</h3>
+                        <h3>@*@Model.placeId*@</h3>
                     </div>
 
                     <div class="w3-clear"></div>
@@ -80,7 +89,7 @@
                 <div class="w3-container w3-teal w3-padding-16">
 
                     <div class="w3-right">
-                        <h3>@Model.price</h3>
+                        <h3>@*@Model.price*@</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4>Итог к оплате</h4>
@@ -90,7 +99,7 @@
                 <div class="w3-container w3-black w3-padding-16">
 
                     <div class="w3-right">
-                        <h3>@Model.mark</h3>
+                        <h3>@*@Model.mark*@</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4>ваше авто</h4>

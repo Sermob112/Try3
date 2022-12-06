@@ -4,11 +4,17 @@ using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Try3.Models;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+
+
 
 namespace Try3.Controllers
 {
@@ -58,6 +64,8 @@ namespace Try3.Controllers
         [Authorize]
         public  ActionResult Index()
         {
+            dynamic model = new ExpandoObject();
+            model.Orders = GetOrders();
             var Id = User.Identity.GetUserId();
             /*     var b = db.Users.FirstOrDefault(t => t.Id == Id);*/
             /*
@@ -84,20 +92,21 @@ namespace Try3.Controllers
               .Where(a => a.userId == Id)
               .SingleOrDefault();
          */
-            /* ******************* без ошибок, но не рабочая версия вывода коллекции*********
-                 var orderId = db.Orders.FirstOrDefault(a => a.userId == Id);
-                 ApplicationUser users = db.Users
-                     .Include(a => a.Orders)
-           .Where(a => a.Id == Id)
-           .FirstOrDefault();
-                 var view = new UserDitailView
-                 {
-                     Id = users.Id,
+            //*******************без ошибок, но не рабочая версия вывода коллекции*********
+            /* var orderId = db.Orders.FirstOrDefault(a => a.userId == Id);
+         ApplicationUser users = db.Users
+             .Include(a => a.Orders)
+   .Where(a => a.Id == Id)
+   .FirstOrDefault();
+         var view = new UserDitailView
+         {
+             Id = users.Id,
 
-                     Orders = users.Orders.ToList()
-                 };
-     */
-            var order = db.Orders.FirstOrDefault(a => a.userId == Id);
+             Orders = users.Orders.ToList()
+         };*/
+
+            //*********************рабочая, но топорная версия*************************
+           /* var order = db.Orders.FirstOrDefault(a => a.userId == Id);
             var user = db.Users.FirstOrDefault(a => a.Id == Id);
             var place = db.Places.FirstOrDefault(a => a.id == order.placeId);
             var view = new UserDitailView
@@ -105,16 +114,51 @@ namespace Try3.Controllers
                 Id = order.userId,
                 placeId = order.placeId,
                 carId = order.carId,
-                /* Orders = order.users.Orders.ToList(),*/
+                Orders = order.users.Orders.Where(a => a.id == order.id).ToList(),
                 mark = order.carNum,
                 price = place.price,
                 Name = user.UserName
             };
+*/
 
 
+            return View(model/*view*/);
 
-            return View(view);
-
+        }
+        //
+        private  List<orders> GetOrders()
+        {
+            var USId = User.Identity.GetUserId();
+            SqlParameter nameParam = new SqlParameter("@USId", USId);
+          
+            List<orders> customers = new List<orders>();
+            string query = "SELECT  userId, placeId, carId, quantity FROM AspNetUsers C,orders o where c.id = @USId and c.id = o.userId ";
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+           
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Parameters.Add(nameParam);
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            customers.Add(new orders
+                            {
+                                userId = sdr["userId"].ToString(),
+                                placeId = int.Parse(sdr["placeId"].ToString()),
+                                carId = int.Parse(sdr["carId"].ToString()),
+                                quantity = int.Parse(sdr["quantity"].ToString())
+                            });
+                        }
+                    }
+                    con.Close();
+                    return customers;
+                }
+            }
         }
         [Authorize]
         public async Task<ActionResult> Info(ManageMessageId? message)

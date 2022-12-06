@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.Data.SqlClient;
 
 namespace Try3.Models
 {
@@ -45,12 +46,13 @@ namespace Try3.Models
     public class UserDitailView : IdentityUser
     {
         public List<orders> Orders { get; set; }
-        public Nullable<int> placeId { get; set; }
-        public Nullable<int> carId { get; set; }
+        public int placeId { get; set; }
+        public int carId { get; set; }
         public string mark { get; set; }
 
         public int price { get; set; }
         public string Name { get; set; }
+
     }
     public partial class place
     {
