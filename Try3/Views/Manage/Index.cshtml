@@ -23,13 +23,13 @@
         }*@
     @foreach (Try3.Models.orders customer in Model.Orders)
     {
-        <tr>
-            <td>@customer.carId</td>
-            <td>@customer.userId</td>
-            <td>@customer.placeId</td>
-            <td>@customer.quantity</td>
-        </tr>
-    }
+@*
+            @customer.carId
+          @customer.userId
+            @customer.placeId
+            @customer.quantity*@
+
+
 
     <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px; top:110px;" id="mySidebar">
         <br>
@@ -39,7 +39,7 @@
             </div>
             <div class="w3-col s8 w3-bar">
                 <span>
-                    <strong>  Привет @*@Model.Name*@</strong>
+                    <strong>  Привет @*@Model.Name*@   @customer.userId </strong>
                 </span><br>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <div class="w3-quarter">
                 <div class="w3-container w3-blue w3-padding-16">
                     <div class="w3-right">
-                        <h3>@*@Model.placeId*@</h3>
+                        <h3>@*@Model.placeId*@  @customer.placeId</h3>
                     </div>
 
                     <div class="w3-clear"></div>
@@ -89,7 +89,7 @@
                 <div class="w3-container w3-teal w3-padding-16">
 
                     <div class="w3-right">
-                        <h3>@*@Model.price*@</h3>
+                        <h3>@*@Model.price*@  @customer.quantity</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4>Итог к оплате</h4>
@@ -131,8 +131,9 @@
         </div>
 
     </div>
-
+    }
 </body>
+ 
 </html>
 
 

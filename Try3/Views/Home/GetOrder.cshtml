@@ -1,0 +1,54 @@
+﻿@*@model Try3.Models.orders
+
+    <h2>GetOrder</h2>
+
+    @{
+        ViewBag.Title = "GetOrder";
+    }
+
+    <h2>Вы уверенны что хотите купить это место</h2>
+
+    <dl>
+        <dt>Название заказа</dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+
+        <dt>Номер места</dt>
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Удалить" />
+    }
+*@
+@model Try3.Models.place
+@{
+    ViewBag.Title = "edit";
+}
+
+<h2>Подтвердить заказ</h2>
+@using (Html.BeginForm())
+{
+    <dt>Номер места</dt>
+    <br />
+    <h2>
+        @Html.DisplayFor(model => model.id)
+    </h2>
+
+
+    <br />
+    @*    @Html.EditorFor(model => model.created)
+        <br />
+        <br />
+        @Html.EditorFor(model => model.userId)
+        <br />*@
+    <br />
+    @Html.LabelFor(model => model.price, "Цена")
+    <br />
+    <br />
+    <input type="submit" value="Купить" />
+}
+

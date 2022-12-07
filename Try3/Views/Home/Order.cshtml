@@ -1,32 +1,45 @@
-﻿@model Try3.Models.orders
+﻿
+@using Try3.Models
+@model dynamic
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h2>Сделать заказ</h2>
 
-@using (Html.BeginForm())
-{
-   @* @Html.LabelFor(model => model.carId, "Укажите автомобиль")
-    <br />
-    @Html.EditorFor(model => model.carId)
-    <br />*@
-    <br />
-    @Html.LabelFor(model => model.placeId, "Укажите номер места")
-    <br />
-    @Html.EditorFor(model => model.placeId)
-    <br />
-    <br />
-    @Html.LabelFor(model => model.quantity, "Количество мест")
-    <br />
-    @Html.EditorFor(model => model.quantity)
-    <br />
-    <br />
-    @Html.LabelFor(model => model.carNum, "номер вашего авто")
-    <br />
-    @Html.EditorFor(model => model.carNum)
-    <br />
-    <br />
-    <input type="submit" value="Добавить" />
-}
+<body class="w3-light-grey">
+    <div class="w3-content" style="max-width:1532px;">
+
+        <div class="w3-container w3-margin-top" id="place">
+            <h3>Места</h3>
+            <p>Выбирите места которые вам подходят</p>
+        </div>
+    </div>
+    
+    @foreach (Try3.Models.place placer in Model.Places)
+    {
+
+
+        <div class="w3-quarter w3-margin-bottom">
+            <div class="w3-container w3-white">
+                <h3>Парковочное место</h3>
+                <h6 class="w3-opacity">@placer.price рублей</h6>
+                <p>№ @placer.id</p>
+
+                @*  @using (Html.BeginForm())
+                    {
+                        <input type="submit" value="купить" />
+                    }*@
+                <button input type="submit" class="w3-button w3-block w3-black w3-margin-bottom"><a href="/Home/GetOrder/@placer.id">купить<a /></button>
+            </div>
+        </div>
+      
+    }
+
+</body>
+
+
+
+
+
+
+
+
+

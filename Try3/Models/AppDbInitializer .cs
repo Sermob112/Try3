@@ -16,8 +16,11 @@ namespace Try3.Models
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-         
-
+            var place1 = new place { id = 1, price = 1500 };
+            var place2 = new place { id = 2, price = 500 };
+            var place3 = new place { id = 3, price = 500 };
+            var place4 = new place { id = 4, price = 500 };
+      
             // создаем две роли
             var role1 = new IdentityRole { Name = "admin" };
             var role2 = new IdentityRole { Name = "user" };

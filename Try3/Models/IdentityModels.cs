@@ -74,9 +74,9 @@ namespace Try3.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public string userId { get; set; }
-        public Nullable<int> placeId { get; set; }
-        public Nullable<int> carId { get; set; }
-        public Nullable<System.DateTime> created { get; set; }
+        public int placeId { get; set; }
+        public int carId { get; set; }
+        public System.DateTime created { get; set; }
         public int quantity { get; set; }
         public string carNum { get; set; }
         public virtual cars cars { get; set; }
