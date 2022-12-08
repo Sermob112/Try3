@@ -9,9 +9,10 @@
             <tr class="header">
                 <th>Номер заказа</th>
                 <th>Номер клиента</th>
+                <th>Id авто</th>
+                <th>Цена</th>
+                <th>номер места</th>
                 <th>Номер авто</th>
-                <th>Количество</th>
-                <th>место</th>
             </tr>
             @foreach (Try3.Models.orders b in Model)
             {
@@ -21,6 +22,8 @@
                     <th>@b.carId</th>
                     <th>@b.quantity</th>
                     <th>@b.placeId</th>
+                    <th>@b.carNum</th>
+                    
                     <th><button class="w3-button w3-green"><a href="/admin/Home/Edit/@b.id">Изменить</a></button></th>
                     <th><button class="w3-button w3-red"><a href="/admin/Home/Delete/@b.id">Удалить</a></button></th>
 

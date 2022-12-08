@@ -23,7 +23,7 @@
         }*@
     @foreach (Try3.Models.orders customer in Model.Orders)
     {
-@*
+@*          
             @customer.carId
           @customer.userId
             @customer.placeId
@@ -39,7 +39,9 @@
             </div>
             <div class="w3-col s8 w3-bar">
                 <span>
-                    <strong>  Привет @*@Model.Name*@   @customer.userId </strong>
+                    <strong>  Привет @*@Model.Name*@ @foreach (Try3.Models.ApplicationUser users in Model.Users) 
+                    
+                    { @users.UserName} </strong>
                 </span><br>
             </div>
         </div>
@@ -65,16 +67,7 @@
             <h5><b><i class="fa fa-dashboard"></i> Основная панель</b></h5>
         </header>
         <div class="w3-row-padding w3-margin-bottom">
-            <div class="w3-quarter">
-                <div class="w3-container w3-red w3-padding-16">
-
-                    <div class="w3-right">
-                        <h3>Доступно </h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h4>Свободных мест</h4>
-                </div>
-            </div>
+ 
             <div class="w3-quarter">
                 <div class="w3-container w3-blue w3-padding-16">
                     <div class="w3-right">
@@ -99,7 +92,7 @@
                 <div class="w3-container w3-black w3-padding-16">
 
                     <div class="w3-right">
-                        <h3>@*@Model.mark*@</h3>
+                        <h3>@*@Model.mark*@  @customer.carNum</h3>
                     </div>
                     <div class="w3-clear"></div>
                     <h4>ваше авто</h4>

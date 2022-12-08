@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Try3.Models;
+using System.Data.SqlClient;
+
 
 namespace Try3.Areas.admin.Controllers
 {
@@ -22,6 +24,7 @@ namespace Try3.Areas.admin.Controllers
 
         public ActionResult ShowOrders()
         {
+         
             return View(db.Orders);
         }
     

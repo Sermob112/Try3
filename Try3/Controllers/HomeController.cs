@@ -145,7 +145,7 @@ namespace Try3.Controllers
             orders.carNum = carNun.carNum;
             orders.placeId = b.id;
             orders.carId = carNun.id;
-
+            orders.quantity = b.price;
             db.Orders.Add(orders);
             db.SaveChanges();
 

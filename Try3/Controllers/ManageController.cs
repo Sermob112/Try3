@@ -66,6 +66,7 @@ namespace Try3.Controllers
         {
             dynamic model = new ExpandoObject();
             model.Orders = GetOrders();
+            model.Users = GetUsers();
             var Id = User.Identity.GetUserId();
             /*     var b = db.Users.FirstOrDefault(t => t.Id == Id);*/
             /*
@@ -132,7 +133,7 @@ namespace Try3.Controllers
             SqlParameter nameParam = new SqlParameter("@USId", USId);
           
             List<orders> customers = new List<orders>();
-            string query = "SELECT  userId, placeId, carId, quantity FROM AspNetUsers C,orders o where c.id = @USId and c.id = o.userId ";
+            string query = "SELECT  userId, placeId, carId,carNum, quantity FROM AspNetUsers C,orders o where c.id = @USId and c.id = o.userId ";
             string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
            
             using (SqlConnection con = new SqlConnection(constr))
@@ -151,7 +152,42 @@ namespace Try3.Controllers
                                 userId = sdr["userId"].ToString(),
                                 placeId = int.Parse(sdr["placeId"].ToString()),
                                 carId = int.Parse(sdr["carId"].ToString()),
-                                quantity = int.Parse(sdr["quantity"].ToString())
+                                quantity = int.Parse(sdr["quantity"].ToString()),
+                                carNum = sdr["carNum"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                    return customers;
+                }
+            }
+        }
+        private List<ApplicationUser> GetUsers()
+        {
+            var USId = User.Identity.GetUserId();
+            SqlParameter nameParam = new SqlParameter("@USId", USId);
+
+            List<ApplicationUser> customers = new List<ApplicationUser>();
+            string query = "SELECT  Email, Id, UserName FROM AspNetUsers where Id = @USId";
+            string constr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand(query))
+                {
+                    cmd.Parameters.Add(nameParam);
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            customers.Add(new ApplicationUser
+                            {
+                                Id = sdr["id"].ToString(),
+                                Email = sdr["Email"].ToString(),
+                                UserName = sdr["UserName"].ToString()
+                              
                             });
                         }
                     }
